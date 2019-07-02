@@ -1,55 +1,22 @@
 'use strict';
 
 const bodyParser = require('body-parser');
-
 const express = require('express');
-
 const app = express();
-
 const router = express.Router();
+
+        //Carrega as Rotas
+const indexRoute = require('./routes/index-route');
+const productRoute = require('./routes/product-route');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-const route = router.get('/', (req, res, next) =>
-{
-    res.status(200).send({
-        title: "Node store API",
-        version: "0.0.3"
-    });
-});
 
-const create = router.post('/', (req, res, next) =>
-{
-    res.status(201).send(req.body);
-    //res.status(201).send("Teste por texto fixo");
-});
-
-
-const put = router.put('/:id', (req, res, next) =>
-{
-    let id = req.params.id;
-    res.status(200).send({
-        id: id,
-        item: req.body
-    });
-
-});
-
-
-const delet = router.delete('/', (req, res, next) =>
-{
-    res.status(200).send(req.body);
-   
-});
-
-
-
-app.use('/', route);
-app.use('/products', create);
-app.use('/products', put);
-app.use('/products', delet);
+app.use('/', indexRoute);
+app.use('/products', productRoute);
 
 module.exports = app;
+
