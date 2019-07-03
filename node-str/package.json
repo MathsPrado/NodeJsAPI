@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin/server.js"
+    "start": "nodemon ./bin/server.js"
   },
   "keywords": [],
   "author": "Eu",
@@ -14,6 +14,7 @@
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "http": "0.0.0",
-    "mongoose": "^5.6.2"
+    "mongoose": "^5.6.2",
+    "nodemon": "^1.19.1"
   }
 }

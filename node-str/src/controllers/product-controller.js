@@ -1,30 +1,48 @@
 'use strict';
 
-const express = require ('express');
-const router = express.Router();
+const mongoose = require('mongoose');
+const Product = mongoose.model('Product'); 
 
 
-router.post('/', (req, res, next) =>
+exports.post = (req, res, next) =>
 {
-    res.status(201).send(req.body);
-});
+    var product = new Product(req.body);
+  
+    // outra forma de pegar especifico obs: e mais valido pois da menos erro!;
+    // var product = new Product();
+    // product.title = new Product();
+
+        //salva no banco;
+        
+    product.save().then(x => {
+
+        res.status(201).send({ message: ' Produto cadastrado com sucesso!'});
+
+    }).catch (e => {
+
+        res.status(400).send({ message: ' Falha a cadastrar o produto!', data: e});
+
+    }); 
+
+   
+};
 
 
-router.put('/:id', (req, res, next) =>
+exports.put = (req, res, next) =>
 {
     let id = req.params.id;
     res.status(200).send({
         id: id,
         item: req.body
     });
-});
+};
 
 
-router.delete('/', (req, res, next) =>"",
-{
-   
-});
+ exports.delete = (req, res, next) =>
+ {
+    res.status(200).send(req.body);
+ };
 
-module.exports = router;
+
 
 // Livro noSql Distiled - Martin Fowler"

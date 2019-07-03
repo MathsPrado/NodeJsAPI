@@ -10,6 +10,9 @@ const mongoose = require('mongoose');
         //conecta ao banco
 mongoose.connect('mongodb+srv://YellowLemon:123@ndstr-n1rdl.mongodb.net/test?retryWrites=true&w=majority');
 
+//Carrega os models
+const Product = require('./models/product');
+
         //Carrega as Rotas
 const indexRoute = require('./routes/index-route');
 const productRoute = require('./routes/product-route');
