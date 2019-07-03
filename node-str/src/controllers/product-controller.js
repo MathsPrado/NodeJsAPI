@@ -20,9 +20,9 @@ router.put('/:id', (req, res, next) =>
 });
 
 
-router.delete('/', (req, res, next) =>
+router.delete('/', (req, res, next) =>"",
 {
-    res.status(200).send(req.body);
+   
 });
 
 module.exports = router;
