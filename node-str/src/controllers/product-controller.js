@@ -5,17 +5,16 @@ const Product = mongoose.model('Product');
 const validation = require('../validators/validator');
 const repository = require('../repositories/product-repository');
 
-exports.get =  (req, res, next) =>{
-    repository
-    .get()
-    .then(data => {
-        res.status(200).send(data);
+exports.get =  async(req, res, next) =>{
+  try{ 
+      var data = await repository.get();
+      res.status(200).send(data);
 
-    }).catch (e => {
-
-        res.status(400).send(e);
-
-    }); 
+  }catch(e){
+    res.status(500).send({
+        message: 'Falha ao processar sua requisição'
+    });
+  }
 }
 
 exports.getBySlug =  (req, res, next) =>{
@@ -52,9 +51,7 @@ exports.getByTag =  (req, res, next) =>{
 
 
 exports.post = (req, res, next) =>
-{
-    
-  
+{  
     // outra forma de pegar especifico obs: e mais valido pois da menos erro!;
     // var product = new Product();
     // product.title = new Product();
@@ -69,9 +66,7 @@ exports.post = (req, res, next) =>
 
         res.status(400).send({ message: ' Falha a cadastrar o produto!', data: e});
 
-    }); 
-
-   
+    });  
 };
 
 

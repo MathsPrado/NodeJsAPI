@@ -12,10 +12,12 @@ mongoose.connect('mongodb+srv://YellowLemon:123@ndstr-n1rdl.mongodb.net/test?ret
 
 //Carrega os models
 const Product = require('./models/product');
+const Usuario = require('./models/usuario');
 
         //Carrega as Rotas
 const indexRoute = require('./routes/index-route');
 const productRoute = require('./routes/product-route');
+const usuarioRoute = require('./routes/usuario-route');
 
 
 app.use(bodyParser.json());
@@ -26,6 +28,7 @@ app.use(bodyParser.urlencoded({
 
 app.use('/', indexRoute);
 app.use('/products', productRoute);
+app.use('/usuario', usuarioRoute);
 
 module.exports = app;
 

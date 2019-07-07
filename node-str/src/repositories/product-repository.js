@@ -9,8 +9,6 @@ exports.get = async() => {
     return res;
 }
 
-
-
 exports.getBySlug = async(slug) => {
     const res = await Product
         .findOne({
@@ -23,15 +21,11 @@ exports.getBySlug = async(slug) => {
 }
 
 
-
 exports.getById = async(id) => {
     const res = await Product
         .findById(id);
     return res;
-
 }
-
-
 
 exports.getByTag = async(tag) => {
     const res = Product
@@ -43,8 +37,6 @@ exports.getByTag = async(tag) => {
     return res;
 
 }
-
-
 
 exports.create = async(data) => {
     var product = new Product(data);
